@@ -1,1 +1,1 @@
-# didactic-octo-guide
+# SQlizr
