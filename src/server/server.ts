@@ -39,5 +39,10 @@ app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}...`);
   });
 
-module.exports = app;
+//sample function for testing
+function sum(a, b) {
+    return a + b;
+}
+
+module.exports = {app, sum};
 
