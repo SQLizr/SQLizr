@@ -4,7 +4,7 @@
   "description": "Semantic Management Tool for SQL",
   "main": "./src/client/index.ts",
   "scripts": {
-    "test:front": "jest --config=jest.react.config.js",
+    "test:front": "jest --config=jest.react.config.js --watch",
     "test:back": "jest --config=jest.node.config.js",
     "test:watch": "jest --watch",
     "dev": "webpack server --mode development --open --hot",
