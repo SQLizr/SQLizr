@@ -44,9 +44,9 @@ const bcrypt = require('bcrypt');
     console.log('in userController.addUser');
     const { username, password, organization} = req.body;
     console.log(username, password, organization);
-    const user_id = username + password;
+    const user_id = Math.floor(Math.random()* 100000)
 
-    // bcrypt logic to be worked on
+    //bcrypt logic to be worked on
     // const hashedPass = async () => {
     //   const hashPass = await bcrypt.hash(password, 12);
     //   return hashPass;
@@ -60,12 +60,20 @@ const bcrypt = require('bcrypt');
     //console.log(hashedPass, user_id);
 
     const query = `
-    INSERT INTO user_data (username, password, organization, user_id)  
-    VALUES
-    ($1, $2, $3, $4);
-    `;
+    INSERT INTO user_data (
+      user_id, 
+      username, 
+      password, 
+      organization 
+      )
+    VALUES (
+      $1,
+      $2,
+      $3,
+      $4
+    );`
 
-    db.query(query, [username, password, organization, user_id])
+    db.query(query, [user_id, username, password, organization])
       .then((response:any) => {
         // insert logic for randomized, more secure ssid
         res.locals.username = username;
@@ -88,27 +96,30 @@ const bcrypt = require('bcrypt');
     console.log('userController.verifyUser')
 
     const { username, password } = req.body;
+    console.log("username:", username, "password:", password);
     
     if (!username || !password) return next('Missing username or password in userController.verifyUser.');
     
-    const hashedPass = bcrypt.hash(password, 12);
-    const user_id = bcrypt.hash(username, 12); 
+    // const hashedPass = async () => {
+    //   const hashPass = await bcrypt.hash(password, 12);
+    //   return hashPass;
+    // };
+    // const user_id = bcrypt.hash(username, 12); 
 
     const query = `
     SELECT * 
     FROM user_data u
-    WHERE u.username = $1 AND 
-    WHERE u.password = $2 `;
+    WHERE u.username = $1 AND u.password = $2; `;
 
-    db.query(query, [hashedPass, user_id])
+    db.query(query, [username, password])
       .then((user_data: any) => {
         if (!user_data) {
           console.log('no user in DB');
           res.redirect('/signup');
         } else {
             console.log(`successful logged in : ${username}!`);
-            res.locals.user_data = user_data;
-            console.log('user data:', user_data)
+            res.locals.user_data = user_data.rows;
+            console.log('user data:', user_data.rows)
             return next();
         } 
       })
@@ -122,8 +133,5 @@ const bcrypt = require('bcrypt');
         });
     });  
   }; 
-  
-
-
 
 module.exports = userController;

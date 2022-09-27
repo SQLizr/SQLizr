@@ -6,7 +6,7 @@ router.get('/allUsers', userController.getAllUsers, (req:any, res:any) => {
     res.status(200).json(res.locals.users);
 });
 
-router.get('/verify', userController.verifyUser, (req:any, res:any) => {
+router.post('/verify', userController.verifyUser, (req:any, res:any) => {
   res.status(200).json(res.locals.user_data);
 });
 

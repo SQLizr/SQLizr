@@ -22,7 +22,7 @@ queryController.getAll = (req:any, res:any, next:any) => {
 
     queriesDB.query(queryText)
         .then((allQueries:any) => {
-            console.log('getAll data: ', allQueries.rows);
+            //console.log('getAll data: ', allQueries.rows);
             res.locals.queries = allQueries.rows;
             next()
         })
@@ -52,7 +52,7 @@ queryController.getUserFavorites = (req:any, res:any, next:any) => {
   queriesDB.query(queryText1, [username])
     .then((user:any) => {
       const values = user.rows[0].favorites
-      console.log('getUserFavorites values: ',values)
+      //console.log('getUserFavorites values: ',values)
       const queryText2 = `
       SELECT *
       FROM queries 
@@ -61,7 +61,7 @@ queryController.getUserFavorites = (req:any, res:any, next:any) => {
       `;
       queriesDB.query(queryText2, [values])
           .then((favorites:any) => {
-              console.log('getUserFavorites data: ', favorites.rows);
+              //console.log('getUserFavorites data: ', favorites.rows);
               res.locals.queries = favorites.rows;
               next()
           })
@@ -92,7 +92,7 @@ queryController.getUserHistory = (req:any, res:any, next:any) => {
   queriesDB.query(queryText1, [username])
     .then((user:any) => {
       const values = user.rows[0].search_history
-      console.log('getUserHistory values: ',values)
+      //console.log('getUserHistory values: ',values)
       const queryText2 = `
       SELECT *
       FROM queries 
@@ -101,7 +101,7 @@ queryController.getUserHistory = (req:any, res:any, next:any) => {
       `;
       queriesDB.query(queryText2, [values])
           .then((history:any) => {
-              console.log('getUserHistory data: ', history.rows);
+              //console.log('getUserHistory data: ', history.rows);
               res.locals.queries = history.rows;
               next()
           })
@@ -134,7 +134,7 @@ queryController.getSpecificQueries = (req:any, res:any, next:any) => {
   `;
   queriesDB.query(queryText, [http_type])
     .then((queries:any) => {
-      console.log('getSpecificQueries: ', queries.rows)
+      //console.log('getSpecificQueries: ', queries.rows)
       res.locals.queries = queries.rows
       next()
     })
@@ -164,15 +164,32 @@ queryController.getAllTags = (req:any, res:any, next:any) => {
 
   queriesDB.query(queryText)
     .then((tags:any) => {
-      console.log('getAllTags tags.rows[0]: ', tags.rows[0])
-      const tagsRow = tags.rows[0]
-      //const filteredTags = tagsRow.filter((c:any, index:any) => {return tags.rows[0].indexOf(c) === index})
-      res.locals.tags = tagsRow
+      //console.log('getAllTags tags.rows[0]: ', tags.rows[0].array_agg)
+      const tagsRow = tags.rows[0].array_agg
+      const filtered:any = {}
+      for(let i = 0; i < tagsRow.length; i++){
+        if(!filtered[tagsRow[i]]){
+          filtered[tagsRow[i]] = true
+        }
+      }
+      //console.log('filtered: ', filtered)
+      const filteredTags: string[] = []
+      for(let [key, value] of Object.entries(filtered)){
+        filteredTags.push(key)
+      }
+      //console.log('filteredTags: ',filteredTags)
+      res.locals.tags = filteredTags
       next()
     })
 }
 
+queryController.updateQuery = (req:any, res:any, next:any) => {
+  next()
+}
 
+queryController.deleteQuery = (req:any, res:any, next:any) => {
+  next()
+}
 
 
 module.exports = queryController;
