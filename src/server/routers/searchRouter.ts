@@ -7,6 +7,10 @@ router.get('/', queryController.getAll, (req:any, res:any) => {
     res.status(200).json(res.locals.queries);
 });
 
+router.get('/favorites', queryController.getUserFavorites, (req:any, res:any) => {
+    res.status(200).json(res.locals.queries);
+});
+
 // router.post('/', logController.addLog, (req:any, res:any) => {
 //     res.status(200);
 // });

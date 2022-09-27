@@ -38,4 +38,33 @@ queryController.getAll = (req:any, res:any, next:any) => {
           });
 }
 
+queryController.getUserFavorites = (req:any, res:any, next:any) => {
+  console.log('queryController.getUserFavorites executed');
+
+  const queryText = `
+  SELECT Q.* , U.username, U.user_id, U.authorization_status
+  FROM queries Q
+  LEFT JOIN user_data U
+  ON Q.query_id = ANY(U.favorites)
+  ;
+  `;
+
+  queriesDB.query(queryText)
+      .then((data:any) => {
+          console.log('getUserFavorites data: ', data.rows);
+          res.locals.queries = data.rows;
+          next()
+      })
+      .catch((err:any) => {
+          res.status(400);
+          return next(
+            createErr({
+              method: 'getUserFavorites',
+              type: 'querying data',
+              err,
+            })
+          );
+        });
+}
+
 module.exports = queryController;

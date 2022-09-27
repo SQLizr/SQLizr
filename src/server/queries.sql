@@ -7,7 +7,7 @@ CREATE TABLE queries (
   query_data VARCHAR(65535)
 );
 
-CREATE TABLE user_data(
+CREATE TABLE user_data (
   pk_column INT PRIMARY KEY,
   user_id INT UNIQUE,
   username VARCHAR NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE user_data(
   authorization_status VARCHAR,
   favorites INT ARRAY,
   search_history INT ARRAY
-  );
+);
 
 
 SELECT * FROM queries;
@@ -38,7 +38,7 @@ INSERT INTO queries (
     'SELECT * FROM sales;'
   );
 
-  INSERT INTO USER_DATA (
+  INSERT INTO user_data (
     pk_column,
     user_id, 
     username, 
@@ -46,7 +46,8 @@ INSERT INTO queries (
     organization, 
     authorization_status, 
     favorites, 
-    search_history)
+    search_history
+    )
   VALUES (
     123456, 
     654321, 
@@ -58,5 +59,10 @@ INSERT INTO queries (
      ARRAY [2345]
   );
 
+SELECT Q.* , U.username, U.user_id, U.authorization_status
+FROM queries Q
+LEFT JOIN user_data U
+ON Q.query_id = ANY(U.favorites)
+;
 
 
