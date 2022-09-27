@@ -1,6 +1,12 @@
 
 $border-color: lavender;
+$secondary-color: rgb(255, 213, 128); 
+$primary-color: #320644;
+$p-color: #2D0A41;
 
+html{
+  font-family: 'Open Sans', sans-serif;
+}
 
 #root{
   display: flex;
@@ -10,6 +16,7 @@ $border-color: lavender;
 }
 
 #dashboard{
+  background-color: $secondary-color;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -20,7 +27,6 @@ $border-color: lavender;
 }
 
 #main-container{
-
   margin-top: .5em;
   display: flex;
   align-items: center;
@@ -42,10 +48,152 @@ $border-color: lavender;
 
 #content{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 3;
   height: 100%;
   border: 2px solid $border-color;
-  border-radius: .25em;;
+  border-radius: .25em;
+}
+
+#filter-bar{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  gap: .25em;
+}
+
+.filter-field{
+  box-sizing: border-box;
+  height: 96%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid rgba(99, 97, 97, 0.397);
+  border-right: 2px solid rgba(99, 97, 97, 0.397);
+}
+
+#metric-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: .5em;
+  border-left: none;
+}
+
+#request-type {
+  height: auto;
+  border: none;
+}
+
+#tag-selector{
+  height: 40%; 
+}
+
+#sort-btn{
+  height: auto;
+  border: none
+}
+#favorite{
+  border-right: none;
+}
+#query-card{
+  background-color: aliceblue;
+  border: 2px solid $border-color;
+  border-radius: .25em;
+  margin: .25em;
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  padding: .5em;
+}
+
+#querycard-container {
+  margin-top: 2rem;
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+}
+
+#toolbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#toolbox button {
+  width: 80%;
+  margin: .75em;
+  height: 8%;
+}
+
+
+#query-form-popup{
+  position: fixed;
+  bottom: 20%;
+  right: 20%;
+  background-color: $secondary-color;
+  width: 30%;
+  height: auto;
+  padding: 4em;
+  border: 2px solid rgb(181, 180, 180);
+  border-radius: .25em;
+  box-shadow: 10px 5px 5px $border-color;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#popup-close-btn{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-top: -2em;
+  margin-right: -2em;
+}
+
+#popup-close-btn:hover{
+  transform: scale(1.5);
+}
+
+#form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+#form-container input{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#form-container button{
+  width: 100%;
+  height: auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+
+
+#btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3em; 
 }

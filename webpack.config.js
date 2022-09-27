@@ -30,8 +30,8 @@ module.exports = {
   ],
   devServer: {
     static: {
-      publicPath: '/build',
-      directory: path.resolve(__dirname, 'build'),
+      publicPath: '/dist',
+      directory: path.resolve(__dirname, 'dist'),
     },
     compress: true,
     hot: true,
