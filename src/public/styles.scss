@@ -110,6 +110,13 @@ html{
   padding: .5em;
 }
 
+#querycard-container {
+  margin-top: 2rem;
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+}
+
 #toolbox{
   display: flex;
   flex-direction: column;

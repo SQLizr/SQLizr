@@ -119,7 +119,9 @@ function Content() {
         </ThemeProvider>
 
       </form>
+      <div id='querycard-container' className='container'>
       <QueryCard />
+      </div>
 
     </main>
   );
