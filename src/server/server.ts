@@ -40,7 +40,7 @@ app.listen(PORT, () => {
   });
 
 //sample function for testing
-function sum(a, b) {
+function sum(a: number, b: number) {
     return a + b;
 }
 
