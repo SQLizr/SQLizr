@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Dashboard from './components/Dashboard'
 import Toolbox from './components/Toolbox'
 import Content from './components/Content';
+import PopupForm from './components/PopupForm';
 
 function App () {
 
@@ -15,6 +16,7 @@ function App () {
         <div id='main-container'>
           <Toolbox />
           <Content />
+        
         </div>
         </>
     );

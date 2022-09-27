@@ -1,7 +1,10 @@
 
 $border-color: lavender;
+$secondary-color: rgb(255, 213, 128); 
 
-
+html{
+  font-family: 'Open Sans', sans-serif;
+}
 #root{
   display: flex;
   flex-direction: column;
@@ -10,6 +13,7 @@ $border-color: lavender;
 }
 
 #dashboard{
+  background-color: $secondary-color;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -41,10 +45,80 @@ $border-color: lavender;
 
 #content{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 3;
   height: 100%;
   border: 2px solid $border-color;
-  border-radius: .25em;;
+  border-radius: .25em;
 }
+
+#filter-bar{
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  gap: .25em;
+}
+
+.filter-field{
+  box-sizing: border-box;
+  height: 96%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid rgba(99, 97, 97, 0.397);
+  border-right: 2px solid rgba(99, 97, 97, 0.397);
+}
+
+#metric-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: .5em;
+  border-left: none;
+}
+
+#request-type {
+  height: auto;
+  border: none;
+}
+
+#sort-btn{
+  height: auto;
+  border: none
+}
+#favorite{
+  border-right: none;
+}
+#query-card{
+  background-color: aliceblue;
+  border: 2px solid $border-color;
+  border-radius: .25em;
+  margin: .25em;
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  padding: .5em;
+}
+
+#toolbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#toolbox button {
+  width: 80%;
+  margin: .75em;
+  height: 8%;
+}
+
+
+
