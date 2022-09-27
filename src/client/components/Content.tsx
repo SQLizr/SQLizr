@@ -45,9 +45,14 @@ declare module '@mui/material/Button' {
 
 
 function Content() {
-  // const [tags, setTags] = useState<Array<JSX.Element>>([]);
+  const [queries, setQueries] = useState<Array<JSX.Element>>([]);
   const [favorited, setFavorited] = useState<boolean>(false);
 
+  useEffect(() => {
+    const queryCards: JSX.Element[] = [];
+    let queryData;
+    
+  })
   // // when tags are updated, repopulate the tags dropdown to include all possible options
   // useEffect(() => {
   //   // we will receive a array of strings of tags from backend
