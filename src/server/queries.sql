@@ -65,4 +65,22 @@ LEFT JOIN user_data U
 ON Q.query_id = ANY(U.favorites)
 ;
 
+SELECT U.username, U.authorization_status, U.favorites, U.search_history 
+FROM user_data U
+WHERE U.username = 'admin_user'
+;
+
+SELECT U.username, U.authorization_status, U.favorites, U.search_history 
+FROM user_data U
+WHERE U.username = 'user_user'
+;
+
+SELECT ARRAY_AGG(c)
+FROM (
+  SELECT unnest(queries.tags)
+  FROM queries
+)
+AS dt(c)
+;
+
 
