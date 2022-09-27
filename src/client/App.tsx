@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
+import Dashboard from './components/Dashboard'
+import Toolbox from './components/Toolbox'
+import Content from './components/Content';
 
 function App () {
     return(
-        <div>
-            <h1>SQLizr</h1>
-            <h2>Semantic management tool for SQL</h2>
-        </div>
+        <>
+        <Dashboard />
+        <Toolbox />
+        <Content />
+        </>
     );
 }
 
