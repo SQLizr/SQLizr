@@ -16,7 +16,7 @@ function App () {
         <div id='main-container'>
           <Toolbox />
           <Content />
-        
+          <PopupForm />
         </div>
         </>
     );

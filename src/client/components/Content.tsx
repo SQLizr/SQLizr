@@ -9,7 +9,7 @@ function Content () {
     // we will receive a array of strings of tags from backend
     const tagTexts: string[] = ['marketing', 'HR', 'engineering'];
     const tagOptions: Element[] = [];
-    for(let i = 0; i < tagText.length; i++){
+    for(let i = 0; i < tagTexts.length; i++){
       // tagOptions.push(<option value={tagText[i]}>{tagText[i]}</option>);
     }
   }, [tags]);
