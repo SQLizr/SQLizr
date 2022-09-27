@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000;
+const searchRouter = require('./routers/searchRouter.ts')
 
 //PARSE BODY ON EVERY REQUEST
 app.use(express.json());
@@ -17,7 +18,7 @@ if(process.env.NODE_ENV === 'production'){
 // serve static files in 'public' folder
 app.use(express.static(path.join(__dirname, './src/public')))
 
-
+app.use('/search', searchRouter)
 
 //GLOBAL ERROR HANDLER
 // catch-all route handler
@@ -39,10 +40,5 @@ app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}...`);
   });
 
-//sample function for testing
-function sum(a: number, b: number) {
-    return a + b;
-}
-
-module.exports = {app, sum};
+module.exports = app;
 
