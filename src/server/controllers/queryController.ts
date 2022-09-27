@@ -188,7 +188,7 @@ queryController.updateQuery = (req:any, res:any, next:any) => {
 }
 
 queryController.deleteQuery = (req:any, res:any, next:any) => {
-  next()
+  next() 
 }
 
 
