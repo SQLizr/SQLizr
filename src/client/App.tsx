@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client'
 import Dashboard from './components/Dashboard'
 import Toolbox from './components/Toolbox'
 import Content from './components/Content';
 
 function App () {
+
+    const [authorization, setAuthorization] = useState('admin')
+    const [username, setUserName] = useState('username')
+
     return(
         <>
-        <Dashboard />
-        <Toolbox />
-        <Content />
+        <Dashboard username={username}/>
+        <div id='main-container'>
+          <Toolbox />
+          <Content />
+        </div>
         </>
     );
 }
