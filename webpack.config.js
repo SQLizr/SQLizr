@@ -27,5 +27,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/public/index.html',
     }),
-  ]
+  ],
+  devServer: {
+    static: {
+      publicPath: '/build',
+      directory: path.resolve(__dirname, 'build'),
+    },
+    compress: true,
+    hot: true,
+    port: 8080,
+    proxy: {
+        '/': 'http://localhost:3000'
+    }
+  },
 };
