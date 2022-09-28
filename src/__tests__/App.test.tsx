@@ -3,6 +3,17 @@ import "@testing-library/jest-dom/extend-expect";
 
 
 import App from '../client/App';
+import { UserData } from '../client/Types';
+
+const mockUserData: UserData = {
+  authorization_status: 'admin',
+  favorites: [1,3],
+  organization: 'mockOrg',
+  password: 'mockPW',
+  search_history: [1,2],
+  user_id: 2,
+  username: 'mockUser'
+}
 
 beforeAll(() => {
   render(<App />);

@@ -63,7 +63,7 @@ function Content() {
         for (let i = 0; i < data.length; i++) {
           // iterate through this array, and with each object in the array, create a new Query Card component
           // push that into queryCards array
-          queryCards.push(<QueryCard data={data[i]} />)
+          queryCards.push(<QueryCard data={data[i]} key={`query#${i}`}/>)
         }
         // setState -> setQueries to set queries = queryCard
         setQueries(queryCards);
@@ -90,7 +90,7 @@ function Content() {
 
   return (
     <main id="content" >
-      <form id="filter-bar" >
+      <div id="filter-bar" >
         <ThemeProvider theme={theme}>
           <div className="filter-field" id='metric-name'>
             <Box
@@ -114,6 +114,7 @@ function Content() {
                 labelId="type-select-label"
                 id="type-select"
                 label="Type"
+                defaultValue=""
               >
                 <MenuItem value="POST">Add</MenuItem>
                 <MenuItem value="GET">Find</MenuItem>
@@ -130,6 +131,7 @@ function Content() {
                 labelId="sort-select-label"
                 id="sort-select"
                 label="sort"
+                defaultValue=""
               >
                 <MenuItem value="alphabet-increasing">A-Z</MenuItem>
                 <MenuItem value="alphabet-decreasing">Z-A</MenuItem>
@@ -146,7 +148,7 @@ function Content() {
           </div>
         </ThemeProvider>
 
-      </form>
+      </div>
       <div id='querycard-container' className='container'>
         {queries}
       </div>

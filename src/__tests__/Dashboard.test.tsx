@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 import Dashboard from '../client/components/Dashboard';
 
 beforeAll(() => {
-  render(<Dashboard username={undefined} />);
+  render(<Dashboard username={'mockuser'} />);
 });
 
 describe('<Dashboard />', () => {

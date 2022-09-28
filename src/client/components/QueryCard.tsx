@@ -13,7 +13,7 @@ function QueryCard(props: QueryCardProps): JSX.Element {
    };
    for (let i = 0; i < props.data.tags.length; i++) {
       tags.push(
-         <div style={tagStyle} className="tag-container">
+         <div style={tagStyle} className="tag-container" key={`tag#${i}`}>
             {props.data.tags[i]}
          </div>
       )
@@ -36,7 +36,6 @@ function QueryCard(props: QueryCardProps): JSX.Element {
             {/* <span id="favorite-star">&#9734; </span> <span> &#9733;</span> */}
             <span id="favorite-star"> &#9733; </span>
          </div>
-
       </div>
    );
 }

@@ -1,19 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import '../../../src/public/login.scss';
+import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
+import { useNavigate , Link } from 'react-router-dom';
+import axios from 'axios';
+import { UserData } from '../Types';
+import { useUserContext } from '../UserContext';
+
 
 function Login() {
-
-  useEffect(() => {
-    const form = document.getElementById('loginForm');
-    form?.addEventListener('submit', verifyLogin);
-  }, []);
+  const { userData, setUserData } = useUserContext();
+  const navigate = useNavigate();
+  // useEffect(() => {
+  //   const form = document.getElementById('loginForm');
+  //   form?.addEventListener('submit', verifyLogin);
+  // }, []);
   
-  const verifyLogin = (e:Event) => {
-    const username = document.getElementById('username')?.getAttribute('value');
-    console.log(username);
-    const password = document.getElementById('password')?.getAttribute('value');
-    console.log(password);
+  const verifyLogin: FormEventHandler = (e: FormEvent) => {
+    // this prevents refresh on form submission
+    e.preventDefault();
+    const target = e.target as Element;
+    const username = (target.children[0] as HTMLInputElement).value;
+    const password = (target.children[1] as HTMLInputElement).value;
+
+    axios.post('/login/verify', {
+      username,
+      password
+    }).then((res) => (res.data[0]))
+    .then((data: UserData) => {
+      // prop drill a function to setUserData in a higher component
+      // redirect to dashboard page
+      setUserData(data);
+      navigate('/dashboard');
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   return (
@@ -26,8 +44,7 @@ function Login() {
         <form
           className='loginForm'
           id='loginForm'
-          method='POST'
-          action='/login/verify'
+          onSubmit={verifyLogin}
         >
           <input
             className='username'
