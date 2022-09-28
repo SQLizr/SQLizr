@@ -1,8 +1,9 @@
 
 $border-color: lavender;
-$secondary-color: #9a89a1; 
+$secondary-color: #ffffff; 
 $primary-color: #39074d;
-$p-color: #2D0A41;
+$p-color: #39074d;
+$light-background: rgb(227, 227, 242);
 
 html{
   font-family: 'Open Sans', sans-serif;
@@ -20,7 +21,6 @@ html{
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-grow: 1;
   padding: 0 1em 0 1em;
   border: 2px solid $border-color;
   border-radius: .25em;
@@ -32,7 +32,9 @@ html{
   align-items: center;
   justify-content: center;
   width: 100%;
-  flex-grow: 5;
+  height: 96%;
+  max-height: 92vh;
+  flex-grow: 1;
   gap: .5em;
  
 }
@@ -40,6 +42,8 @@ html{
 #toolbox{
   display: flex;
   flex-grow: 1;
+  max-width: 400px;
+  min-width: 200px;
   justify-content: center;
   align-items: center;
   border: 2px solid $border-color;
@@ -54,9 +58,10 @@ html{
   align-items: center;
   flex-grow: 2;
   height: 100%;
+  padding: 0;
   border: 2px solid $border-color;
   border-radius: .25em;
-  overflow: scroll;
+  background-color: $light-background;
 }
 
 #filter-bar{
@@ -107,7 +112,7 @@ html{
   border-right: none;
 }
 #query-card{
-  background-color: #9a89a1;
+  background-color: white;
   border: 2px solid $border-color;
   border-radius: .25em;
   margin: .25em;
@@ -160,17 +165,26 @@ html{
 
 
 #querycard-container {
-  margin-top: 2rem;
+  margin: 2rem 0;
   width: 96%;
+  height: 90%;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
-#toolbox{
+#toolbox {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: flex-start;
+  background-color: $light-background;
+}
+
+.toolbox-logo {
+  width: 100%;
+  height: 10%;
+  margin-bottom: 16px;
 }
 
 #toolbox button {

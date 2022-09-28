@@ -16,6 +16,8 @@ function Main() {
     setLoggedIn(bool);
   }
 
+  // Path routing for /dashboard has a conditinal statement
+  // if user is loggedIn p
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

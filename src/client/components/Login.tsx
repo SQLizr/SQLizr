@@ -3,6 +3,7 @@ import { useNavigate, Link, redirect } from 'react-router-dom';
 import axios from 'axios';
 import { LoginProps, UserData } from '../Types';
 import { useUserContext } from '../UserContext';
+import '../../../src/public/login.scss';
 
 
 function Login(props: LoginProps) {
@@ -74,7 +75,7 @@ function Login(props: LoginProps) {
           {
             loginError &&
             <div className='error-message' id='login-error'>
-              Username and password does not exist
+              Please check your username and password and try again.
             </div>
           }
             <button className='login_button' type='submit'>LOGIN</button>
@@ -83,9 +84,6 @@ function Login(props: LoginProps) {
           {/* button for signing in with thirdparty */}
           <Link to='/signup'>
             <button type='button'>SIGN UP</button>
-          </Link>
-          <Link to='/dashboard'>
-            <button type='button'>DEV ONLY</button>
           </Link>
         </div>
       </div>
