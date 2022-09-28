@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Tuber';
+  src: url('./Tuber.ttf') format('truetype');
+}
+
 html {
   background-color: #2D0A41;
   height: 100vh;
@@ -37,15 +42,14 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Tuber';
 }
 h2 {
   display: inline;
   font-size: 40px;
   margin: 12px 0px 0px 4px;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   height: 100%;
   line-height: unset;
   
@@ -53,7 +57,7 @@ h2 {
 button {
   background-color: #6c5b75;
   color: white;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   font-size: 24px;
   width: 100px;
   height: 30px;
@@ -80,7 +84,7 @@ button {
 button:hover {
   background-color: #594762;
   color: white;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   font-size: 24px;
   width: 100px;
   height: 30px;

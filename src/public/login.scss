@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Tuber';
+  src: url('./Tuber.ttf') format('truetype');
+}
 
 .login-container {
   background: radial-gradient(circle, rgba(203,199,205,1) 0%, rgba(45,10,65,1) 100%);
@@ -9,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
 }
 
 .login-content {
@@ -23,24 +27,23 @@
   border: 2px solid #1d062a;
   border-radius: 6px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Dangrek'
+  font-family: 'Tuber';
 }
 .p-3, .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 40px;
-  margin-bottom: 1000px;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   font-size: 20pt;
   font-weight: 200;
 }
@@ -52,12 +55,13 @@
   font-size: 22px;
   font-weight: 100;
   margin: 20px;
-  font-family: 'Dangrek';
+  margin-bottom: 40px;
+  font-family: 'Tuber';
   border-radius: 8px;
 }
 button {
   background-color: #5c446b;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   font-size: 24px;
   width: 100px;
   height: 30px;
@@ -84,7 +88,7 @@ button {
 .oauthbtn {
   display: flex;
   background-color: #5c446b;
-  font-family: 'Dangrek';
+  font-family: 'Tuber';
   font-size: 24px;
   width: 240px;
   height: 40px;
@@ -100,6 +104,10 @@ button {
   height: 40px;
   margin-bottom: 16px;
   font-size: 14px;
+  border:none;
+  padding-left:8px;
+  border-radius:8px;
+  margin-top:8px;
 }
 .password {
   display: flex;
@@ -109,6 +117,9 @@ button {
   height: 40px;
   margin-bottom: 12px;
   font-size: 14px;
+  border:none;
+  padding-left:8px;
+  border-radius:8px;
 }
 
 .login-logo {
@@ -120,7 +131,7 @@ button {
 .sign-in-text {
   color: white;
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #login-error {
@@ -133,6 +144,6 @@ button {
   width: 400px;
 }
 
-.sign-in-text {
-  font-size: 8px;
+.login_button{
+  font-weight:400;
 }
