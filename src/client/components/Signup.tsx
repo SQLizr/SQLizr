@@ -53,7 +53,7 @@ function SignUp() {
     <div className='signup'>
       <div className="signup__container">
       <img className="login-logo" src='https://user-images.githubusercontent.com/34523493/192654338-e3f8b798-cb97-4878-befd-dacd6265bc15.png' alt="SQLizr logo"></img>
-        <h2>Sign Up</h2>
+        <h2>SIGN UP</h2>
         <form
           className='signUpForm'
           id='signUpForm'
@@ -86,7 +86,7 @@ function SignUp() {
               This username is already taken. Please try again.
             </div>
           }
-          <button type='submit'>Sign Up</button>
+          <button type='submit'>SIGN UP</button>
           {/* Create account button makes fetch request onClick, if truthy redirect to /settings */}
         </form>
       </div>

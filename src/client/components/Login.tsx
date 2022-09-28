@@ -52,7 +52,7 @@ function Login(props: LoginProps) {
         <img className="login-logo" src='https://user-images.githubusercontent.com/34523493/192654338-e3f8b798-cb97-4878-befd-dacd6265bc15.png' alt="SQLizr logo"></img>
 
         <div className='p-3'>
-          <header>Login</header>
+          <header>WELCOME!</header>
           <form
             className='loginForm'
             id='loginForm'
