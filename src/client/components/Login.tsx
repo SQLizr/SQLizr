@@ -82,6 +82,7 @@ function Login(props: LoginProps) {
             {/* //Login button makes fetch request onClick, if truthy links to /settings */}
           </form>
           {/* button for signing in with thirdparty */}
+          <p className='signup-text'>Don't have an account? Sign up now!</p>
           <Link to='/signup'>
             <button type='button'>SIGN UP</button>
           </Link>
