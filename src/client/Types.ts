@@ -23,7 +23,8 @@ export type UserData = {
 }
 
 export type LoginProps = {
-  updateUserData: (data:UserData) => void
+  loggedIn: boolean,
+  updateLoggedIn: (bool:boolean) => void
 }
 
 export type AppProps = {

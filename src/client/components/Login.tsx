@@ -1,17 +1,17 @@
 import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
-import { useNavigate , Link } from 'react-router-dom';
+import { useNavigate , Link, redirect } from 'react-router-dom';
 import axios from 'axios';
-import { UserData } from '../Types';
+import { LoginProps, UserData } from '../Types';
 import { useUserContext } from '../UserContext';
 
 
-function Login() {
-  const { userData, setUserData } = useUserContext();
+function Login(props:LoginProps) {
+  const { setUserData } = useUserContext();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const form = document.getElementById('loginForm');
-  //   form?.addEventListener('submit', verifyLogin);
-  // }, []);
+  
+  useEffect(() => {
+    if(props.loggedIn) navigate('/dashboard');
+  }, [props.loggedIn]);
   
   const verifyLogin: FormEventHandler = (e: FormEvent) => {
     // this prevents refresh on form submission
@@ -28,7 +28,8 @@ function Login() {
       // prop drill a function to setUserData in a higher component
       // redirect to dashboard page
       setUserData(data);
-      navigate('/dashboard');
+      props.updateLoggedIn(true);
+      // navigate('/dashboard');
     }).catch((err) => {
       console.log(err);
     });
