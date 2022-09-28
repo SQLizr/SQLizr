@@ -52,6 +52,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.7",
     "@mui/styled-engine-sc": "^5.10.6",
+    "axios": "^0.27.2",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
