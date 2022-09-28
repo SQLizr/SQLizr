@@ -94,7 +94,7 @@ const bcrypt = require('bcrypt');
 
   userController.verifyUser = (req:any, res:any, next:any) => {
     console.log('userController.verifyUser')
-
+    console.log('req.body is ', req.body);
     const { username, password } = req.body;
     console.log("username:", username, "password:", password);
     
@@ -124,13 +124,15 @@ const bcrypt = require('bcrypt');
         } 
       })
       .catch((err: any) => {
-        return next({
+        return next(
+          {
           log: 'Express error handler caught unknown error in userController.verifyUser',
           status: 500,
           message: {
             err: 'error in userController.verifyUser - login credentials incorrect',
           },
-        });
+        }
+        );
     });  
   }; 
 

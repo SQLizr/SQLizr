@@ -1,6 +1,7 @@
 //server/server.ts
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const path = require('path');
 const PORT = 3000;
 const searchRouter = require('./routers/searchRouter.ts')
@@ -9,6 +10,9 @@ const manipulateRouter = require('./routers/manipulateRouter.ts')
 
 //PARSE BODY ON EVERY REQUEST
 app.use(express.json());
+// Parse body on request sent in by a form
+app.use(express.urlencoded());
+app.use(cors());
 
 console.log('server.js process.env.NODE_ENV: ', process.env.NODE_ENV)
 if(process.env.NODE_ENV === 'production'){

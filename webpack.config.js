@@ -35,9 +35,12 @@ module.exports = {
     },
     compress: true,
     hot: true,
+    historyApiFallback: true,
     port: 8080,
     proxy: {
-        '/': 'http://localhost:3000'
+        '/login': 'http://localhost:3000',
+        '/search': 'http://localhost:3000',
+        '/manipulate': 'http://localhost:3000',
     }
   },
 };

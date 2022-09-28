@@ -11,3 +11,27 @@ export type QueryData = {
 export type QueryCardProps = {
   data: QueryData;
 }
+
+export type UserData = {
+  authorization_status: string,
+  favorites: Array<number>,
+  organization: string,
+  password: string,
+  search_history: Array<number>,
+  user_id: number,
+  username: string
+}
+
+export type LoginProps = {
+  loggedIn: boolean,
+  updateLoggedIn: (bool:boolean) => void
+}
+
+export type AppProps = {
+  getUserData: () => UserData
+}
+
+export type UserContent = {
+  userData: UserData,
+  setUserData: (data:UserData) => void
+}

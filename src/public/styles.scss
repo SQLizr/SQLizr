@@ -1,7 +1,7 @@
 
 $border-color: lavender;
-$secondary-color: rgb(255, 213, 128); 
-$primary-color: #320644;
+$secondary-color: #9a89a1; 
+$primary-color: #39074d;
 $p-color: #2D0A41;
 
 html{
@@ -107,7 +107,7 @@ html{
   border-right: none;
 }
 #query-card{
-  background-color: aliceblue;
+  background-color: #9a89a1;
   border: 2px solid $border-color;
   border-radius: .25em;
   margin: .25em;
@@ -120,7 +120,7 @@ html{
 }
 
 .query-card-header{
-  background-color: rgb(214, 236, 255);
+  background-color: rgb(200, 200, 217);
   width: 100%;
   display: flex;
   flex-direction: row;
