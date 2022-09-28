@@ -143,12 +143,13 @@ html{
   width: 30%;
   height: auto;
   padding: 4em;
-  border: 2px solid rgb(181, 180, 180);
+  border: 2px solid rgb(181, 180, 180, 1);
   border-radius: .25em;
   box-shadow: 10px 5px 5px $border-color;
   display: none;
   flex-direction: column;
   justify-content: center;
+  z-index:  3; 
 
 }
 
