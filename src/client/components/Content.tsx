@@ -1,4 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react';
+import axios from 'axios';
 
 // Material UI 
 import Box from '@mui/material/Box';
@@ -13,6 +14,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import QueryCard from "./QueryCard";
 import MultiSelect from "./MultiSelect";
+
+import { QueryData, QueryCardProps } from "../Types"
+
 
 // this is for custom color of MUI components
 const theme = createTheme({
@@ -45,25 +49,40 @@ declare module '@mui/material/Button' {
 
 
 function Content() {
+
   const [queries, setQueries] = useState<Array<JSX.Element>>([]);
   const [favorited, setFavorited] = useState<boolean>(false);
 
   useEffect(() => {
     const queryCards: JSX.Element[] = [];
-    let queryData;
-    
-  })
-  // // when tags are updated, repopulate the tags dropdown to include all possible options
-  // useEffect(() => {
-  //   // we will receive a array of strings of tags from backend
-  //   const tagTexts: string[] = ['marketing', 'HR', 'engineering'];
-  //   const tagOptions: JSX.Element[] = [];
-  //   for (let i = 0; i < tagTexts.length; i++) {
-  //     tagOptions.push(<option value={tagTexts[i]}>{tagTexts[i]}</option>);
-  //   }
-  //   setTags(tagOptions);
-  // }, [tags]);
 
+    // fetch GET /search to the backend
+    axios.get('/search')
+      .then((res) => {
+        const data: QueryData[] = res.data;
+        for (let i = 0; i < data.length; i++) {
+          // iterate through this array, and with each object in the array, create a new Query Card component
+          // push that into queryCards array
+          queryCards.push(<QueryCard data={data[i]} />)
+        }
+        // setState -> setQueries to set queries = queryCard
+        setQueries(queryCards);
+
+        console.log('I am the res.data: ', data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+
+    // receive an array of objects
+    // with keys: query_id, metric_name, http_typ, tags (array of strings), authorization_status, query_data
+
+
+  }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFavorited(event.target.checked);
@@ -117,16 +136,19 @@ function Content() {
               </Select>
             </FormControl>
           </Box>
-          <Switch
-            checked={favorited}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
+          <div id='fav-toggle'>
+            <h2>&#9733;</h2>
+            <Switch
+              checked={favorited}
+              onChange={handleChange}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+          </div>
         </ThemeProvider>
 
       </form>
       <div id='querycard-container' className='container'>
-      <QueryCard />
+        {queries}
       </div>
 
     </main>

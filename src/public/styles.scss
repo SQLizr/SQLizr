@@ -51,7 +51,7 @@ html{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flex-grow: 3;
+  flex-grow: 2;
   height: 100%;
   border: 2px solid $border-color;
   border-radius: .25em;
@@ -111,8 +111,44 @@ html{
   margin: .25em;
   width: 96%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   padding: .5em;
+}
+
+.query-card-header{
+  background-color: rgb(214, 236, 255);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.query-card-body{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+ 
+}
+
+#query-data-text{
+  font-size: 1.5em;
+}
+
+#tags{
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-self: flex-end;
+  align-items: center;
+}
+
+#favorite-star{
+  
+  justify-self: flex-end;
 }
 
 #querycard-container {
@@ -125,13 +161,14 @@ html{
 #toolbox{
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   justify-content: flex-start;
 }
 
 #toolbox button {
   width: 80%;
   margin: .75em;
-  height: 8%;
+  height: 3%;
 }
 
 
@@ -149,7 +186,9 @@ html{
   display: none;
   flex-direction: column;
   justify-content: center;
-
+  opacity: 1;
+  z-index: 9;
+  
 }
 
 #popup-close-btn{
@@ -196,4 +235,15 @@ html{
   justify-content: center;
   align-items: center;
   gap: 3em; 
+}
+
+#fav-toggle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+  }
 }
