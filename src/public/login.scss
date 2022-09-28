@@ -58,8 +58,8 @@ button {
   height: 30px;
   border-radius: 6px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
-  padding-x: 0.75rem;
-  padding-y: 0.275rem;
+  // padding-x: 0.75rem;
+  // padding-y: 0.275rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -102,7 +102,7 @@ button {
   justify-content: center;
   width: 200px;
   height: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 12px;
   font-size: 14px;
 }
 
@@ -116,4 +116,8 @@ button {
   color: white;
   font-size: 12px;
   margin-top: 20px;
+}
+
+#login-error {
+  font-size: 1rem;
 }
