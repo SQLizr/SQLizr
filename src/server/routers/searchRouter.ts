@@ -24,12 +24,5 @@ router.post('/', queryController.getSpecificQueries, (req:any, res:any) => {
     res.status(200).json(res.locals.queries);
 });
 
-// router.patch('/:id', queryController.updateQuery, (req:any, res:any) => {
-//     res.status(200);
-// });
-
-// router.delete('/:id', queryController.deleteQuery, (req:any, res:any) => {
-//     res.status(200).json(res.locals.query);
-// })
 
 module.exports = router;
