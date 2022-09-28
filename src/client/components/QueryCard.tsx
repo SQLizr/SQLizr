@@ -1,8 +1,26 @@
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react";
 import { QueryData, QueryCardProps } from "../Types"
+import { useUserContext } from '../UserContext';
 
 function QueryCard(props: QueryCardProps): JSX.Element {
 
+   const toggleStar = () => {
+     isFavorite ? setIsFavorite(false) : setIsFavorite(true)
+
+     
+     //get a PATCH req to push the query id into the user's favorites array
+     //payload needs: query_id, username
+     const payloadObj = {
+         query_id: props.data.query_id,
+         username: userData.username,
+         favorites: userData.favorites
+     }
+     console.log('toggleStart payloadObj:', payloadObj)
+     //PATCH the payloadObj to the '/manipulate/favorites/add' endpoint
+     //PATH to '/manipulate/favorites/remove'
+   }
+   const { userData, setUserData } = useUserContext();
+   const [isFavorite, setIsFavorite] = useState<boolean>(false)
    // iterate through the tags array to create a sequence of rounded divs,
    // containing each tag
    const tags: JSX.Element[] = [];
@@ -34,7 +52,7 @@ function QueryCard(props: QueryCardProps): JSX.Element {
             <code id="query-data-text">{props.data.query_data}</code>
             <h4 id="tags"> tags: {tags}</h4>
             {/* <span id="favorite-star">&#9734; </span> <span> &#9733;</span> */}
-            <span id="favorite-star"> &#9733; </span>
+            {isFavorite ? <span onClick={toggleStar} className="favorite-star">&#9733;</span> : <span onClick={toggleStar} className="favorite-star">&#9734;</span>}
          </div>
       </div>
    );
