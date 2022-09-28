@@ -228,7 +228,11 @@ html{
   padding-bottom: 1em;
 }
 
-
+#auth-container{
+  display:flex;
+  justify-content:space-evenly;
+  align-items:center;
+}
 
 #btn-container{
   display: flex;
