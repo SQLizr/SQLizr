@@ -52,13 +52,15 @@
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.7",
     "@mui/styled-engine-sc": "^5.10.6",
-    "axios": "^0.27.2",
     "@types/bcrypt": "^5.0.0",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
     "styled-components": "^5.3.6"
   }
 }
