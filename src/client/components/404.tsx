@@ -12,10 +12,11 @@ function Login() {
     <div className="login-container">
     <div className='login-content'>
       <div>
-      <img src="https://user-images.githubusercontent.com/34523493/192654337-c85cc26d-5408-4a24-9be1-163e5c594bbe.png" alt="" />
+      <img id="notfound-image" src="https://user-images.githubusercontent.com/34523493/192654337-c85cc26d-5408-4a24-9be1-163e5c594bbe.png" alt="" />
         {/* <img src='src/assets/background smaller scale.png'></img> */}
       </div>
       <div className='p-3'>
+        <header>404</header>
         <header>Page Not Found</header>
         
       </div>

@@ -39,6 +39,44 @@ const bcrypt = require('bcrypt');
         //     );
         //   });
   }
+  userController.checkUsernameAvailability = (req:any, res:any, next:any) => {
+    console.log('in userController.checkUsernameAvailability');
+    const { username } = req.body;
+    console.log('check username:', username);
+
+    const query = `
+    SELECT * FROM user_data
+    WHERE username = $1;`
+
+    db.query(query, [username])
+      .then((response:any) => {
+        // logic if it already exists
+        console.log('response:', response)
+        if(response.rowCount !== 0) {
+          console.log('response:', response.rowCount)
+          return next({
+            log: 'username already taken',
+            status: 500,
+            message: {
+              err: 'Error in userController.checkUsernameAvailability - username already taken. Please try another one',
+            },
+          })
+        }
+        else{
+          return next()
+        }
+     })
+      .catch((err:any) => {
+        return next({
+          log: 'Express error in userController.checkUsernameAvailability',
+          status: 500,
+          message: {
+            err: 'error in userController.checkUsernameAvailability - issue checking uniqueness of username',
+          },
+        });
+      });
+};
+
 
   userController.addUser = (req:any, res:any, next:any) => {
     console.log('in userController.addUser');
