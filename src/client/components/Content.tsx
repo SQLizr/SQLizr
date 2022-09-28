@@ -47,11 +47,25 @@ declare module '@mui/material/Button' {
   }
 }
 
+ //custom hook for handling inputs
+ const useInput = (init:any) => {
+  const [ value, setValue ] = useState(init);
+  const onChange = (e: { target: any; }) => {
+    setValue(e.target.value);
+  };
+  // return the value with the onChange function instead of setValue function
+  return [ value, onChange ];
+};
+
 
 function Content() {
 
   const [queries, setQueries] = useState<Array<JSX.Element>>([]);
+  const [filtered, setFiltered] = useState<Array<JSX.Element>>([])
   const [favorited, setFavorited] = useState<boolean>(false);
+  const [metric_name, setMetricName] = useInput('')
+  const [http_type, setHttpType] = useInput('');
+  const [isFiltered, setIsFiltered] = useState(false)
 
   useEffect(() => {
     const queryCards: JSX.Element[] = [];
@@ -88,6 +102,36 @@ function Content() {
     setFavorited(event.target.checked);
   };
 
+  //handleSearch - input: http_type, output: filtered array
+  const handleSearch = () => {
+    let isAll = http_type === 'ALL' ? true : false;
+    let httpExists = http_type ? true : false;
+    let metricExists = metric_name ? true : false;
+
+    if(metricExists){
+      if(isAll){
+        const filteredByMetric = queries.filter((query) => (query.props.data.metric_name === metric_name))
+        setIsFiltered(true)
+        setFiltered(filteredByMetric)
+      }else{
+        const filteredByMetric = queries.filter((query) => (query.props.data.metric_name === metric_name))
+        const filteredByHttp = filteredByMetric.filter((query) => query.props.data.http_type === http_type)
+        setIsFiltered(true)
+        setFiltered(filteredByHttp)
+      }
+    }
+    else if(httpExists){
+      if(isAll){
+        setIsFiltered(true)
+        setFiltered(queries)
+      }else{
+        const filteredByHttp = queries.filter((query) => query.props.data.http_type === http_type)
+        setIsFiltered(true)
+        setFiltered(filteredByHttp)
+      }
+    }
+  }
+
   return (
     <main id="content" >
       <div id="filter-bar" >
@@ -101,9 +145,9 @@ function Content() {
               noValidate
               autoComplete="off"
             >
-              <TextField id="metric-ame" label="Metric Name" variant="standard" />
+              <TextField onChange={setMetricName} id="metric-name" label="Metric Name" variant="standard" />
             </Box>
-            <Button color="primary" variant="contained" id='metric-search-btn'>
+            <Button onClick={handleSearch} color="primary" variant="contained" id='metric-search-btn'>
               search
             </Button>
           </div>
@@ -114,12 +158,14 @@ function Content() {
                 labelId="type-select-label"
                 id="type-select"
                 label="Type"
-                defaultValue=""
+                defaultValue="ALL"
+                onChange={setHttpType}
               >
-                <MenuItem value="POST">Add</MenuItem>
-                <MenuItem value="GET">Find</MenuItem>
-                <MenuItem value="PUT">Edit</MenuItem>
-                <MenuItem value="DELETE">Delete</MenuItem>
+                <MenuItem value="ALL">ALL</MenuItem>
+                <MenuItem value="POST">POST</MenuItem>
+                <MenuItem value="GET">GET</MenuItem>
+                <MenuItem value="PATCH">PATCH</MenuItem>
+                <MenuItem value="DELETE">DELETE</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -150,7 +196,7 @@ function Content() {
 
       </div>
       <div id='querycard-container' className='container'>
-        {queries}
+        {isFiltered ? filtered : queries}
       </div>
 
     </main>
