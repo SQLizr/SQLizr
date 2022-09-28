@@ -5,6 +5,7 @@ const path = require('path');
 const PORT = 3000;
 const searchRouter = require('./routers/searchRouter.ts')
 const loginRouter = require('./routers/loginRouter.ts')
+const manipulateRouter = require('./routers/manipulateRouter.ts')
 
 //PARSE BODY ON EVERY REQUEST
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, './src/public')))
 
 app.use('/search', searchRouter)
 app.use('/login', loginRouter)
+app.use('/manipulate', manipulateRouter)
 
 //GLOBAL ERROR HANDLER
 // catch-all route handler
