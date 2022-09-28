@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../../../src/public/login.scss';
 
 function Login() {
-  // let navigate = useNavigate(); //useNavigate is react router hook
-  // function handleClick() {
-  //   const username = document.getElementById('username')
-  //   navigate('/login/verify');
-  // }
 
-  // const submitForm = (e) => {
-
-  // }
+  useEffect(() => {
+    const form = document.getElementById('loginForm');
+    form?.addEventListener('submit', verifyLogin);
+  }, []);
+  
+  const verifyLogin = (e:Event) => {
+    const username = document.getElementById('username')?.getAttribute('value');
+    console.log(username);
+    const password = document.getElementById('password')?.getAttribute('value');
+    console.log(password);
+  }
 
   return (
     <div className="login-container">
@@ -44,7 +47,7 @@ function Login() {
           {/* //Login button makes fetch request onClick, if truthy links to /settings */}
         </form>
         {/* button for signing in with thirdparty */}
-        <Link to='/signuppage'>
+        <Link to='/signup'>
           <button type='button'>SIGN UP</button>
         </Link>
         <Link to='/dashboard'>

@@ -10,6 +10,8 @@ const manipulateRouter = require('./routers/manipulateRouter.ts')
 
 //PARSE BODY ON EVERY REQUEST
 app.use(express.json());
+// Parse body on request sent in by a form
+app.use(express.urlencoded());
 app.use(cors());
 
 console.log('server.js process.env.NODE_ENV: ', process.env.NODE_ENV)
