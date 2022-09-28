@@ -217,4 +217,48 @@ queryController.deleteQuery = (req:any, res:any, next:any) => {
 
 }
 
+queryController.addFavorite = (req: any, res: any, next:any) => {
+  const {query_id, username, favorites} = req.body
+  const updatedFavorites = [...favorites, query_id]
+  const values = [username, updatedFavorites]
+
+  const queryText = `
+  UPDATE user_data
+  SET favorites = $2
+  WHERE username = $1
+  
+  RETURNING *
+  ;`
+
+  queriesDB.query(queryText, values)
+  .then((updated:any)=>{
+    console.log(updated.rows)
+    res.locals.query = updated.rows
+    next();
+  })
+}
+
+queryController.deleteFavorite = (req: any, res: any, next:any) =>{
+
+  const {query_id, username, favorites} = req.body 
+  const updatedFavorites  = favorites.filter((fav: any)=>{ return fav !== query_id})
+  
+  const values = [username, updatedFavorites]
+
+  const queryText = `
+  UPDATE user_data
+  SET favorites = $2
+  WHERE username = $1
+  
+  RETURNING *
+  ;`
+
+  queriesDB.query(queryText, values)
+  .then((updated:any)=>{
+    console.log(updated.rows)
+    res.locals.query = updated.rows
+    next();
+  })
+}
+
 module.exports = queryController;

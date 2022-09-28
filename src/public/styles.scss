@@ -153,10 +153,16 @@ html{
   align-items: center;
 }
 
-#favorite-star{
+.favorite-star{
   
   justify-self: flex-end;
+  transition:0.2s;
+  &:hover{
+    cursor:pointer;
+    transform:scale(1.2);
+  }
 }
+
 
 #querycard-container {
   margin: 2rem 0;
