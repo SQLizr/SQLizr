@@ -8,7 +8,6 @@ CREATE TABLE queries (
 );
 
 CREATE TABLE user_data (
-  pk_column INT PRIMARY KEY,
   user_id INT UNIQUE,
   username VARCHAR NOT NULL,
   password VARCHAR NOT NULL,
@@ -39,7 +38,6 @@ INSERT INTO queries (
   );
 
   INSERT INTO user_data (
-    pk_column,
     user_id, 
     username, 
     password, 
@@ -48,8 +46,7 @@ INSERT INTO queries (
     favorites, 
     search_history
     )
-  VALUES (
-    123456, 
+  VALUES ( 
     654321, 
     'username1', 
     'password1', 
@@ -59,10 +56,42 @@ INSERT INTO queries (
      ARRAY [2345]
   );
 
+  INSERT INTO user_data (
+      user_id, 
+      username, 
+      password, 
+      organization 
+      )
+    VALUES (
+      888,
+      'usernametest',
+      'passtest',
+      'SQLizer'
+    );
+
+
 SELECT Q.* , U.username, U.user_id, U.authorization_status
 FROM queries Q
 LEFT JOIN user_data U
 ON Q.query_id = ANY(U.favorites)
+;
+
+SELECT U.username, U.authorization_status, U.favorites, U.search_history 
+FROM user_data U
+WHERE U.username = 'admin_user'
+;
+
+SELECT U.username, U.authorization_status, U.favorites, U.search_history 
+FROM user_data U
+WHERE U.username = 'user_user'
+;
+
+SELECT ARRAY_AGG(c)
+FROM (
+  SELECT unnest(queries.tags)
+  FROM queries
+)
+AS dt(c)
 ;
 
 
