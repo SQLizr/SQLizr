@@ -14,6 +14,7 @@ function QueryCard(props: QueryCardProps): JSX.Element {
          query_id: props.data.query_id,
          username: userData.username,
          favorites: userData.favorites
+
      }
      console.log('toggleStart payloadObj:', payloadObj)
      //PATCH the payloadObj to the '/manipulate/favorites/add' endpoint
