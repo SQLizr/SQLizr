@@ -4,6 +4,8 @@ import axios from 'axios';
 import { LoginProps, UserData } from '../Types';
 import { useUserContext } from '../UserContext';
 import '../../../src/public/login.scss';
+import { Header } from '../App';
+import { VStack } from '@chakra-ui/react';
 
 
 function Login(props: LoginProps) {
@@ -46,14 +48,35 @@ function Login(props: LoginProps) {
       });
   }
 
+  const [isSignUp, setIsSignUp] = useState<boolean | undefined>(undefined);
+
+  const signUpForm = {
+    
+  }
+
   return (
-    <div className="login-container">
-      <div className='login-content'>
+    <>      
+    <Header />
+    <VStack className="login-container" h="100vh">
+      <VStack className='login-content'>
         <img className="login-logo" src='https://user-images.githubusercontent.com/34523493/192654338-e3f8b798-cb97-4878-befd-dacd6265bc15.png' alt="SQLizr logo"></img>
 
-        <div className='p-3'>
-          <header>WELCOME!</header>
-          <form
+        {
+          typeof isSignUp === 'undefined' && (
+            <>HELLO</>
+          )
+        }
+
+        {
+          isSignUp && (
+            <>SignUp</>
+          )
+        }
+
+        {
+          !(typeof isSignUp === 'undefined')
+          && !(isSignUp) && (
+            <form
             className='loginForm'
             id='loginForm'
             onSubmit={verifyLogin}
@@ -81,14 +104,19 @@ function Login(props: LoginProps) {
             <button className='login_button' type='submit'>LOGIN</button>
             {/* //Login button makes fetch request onClick, if truthy links to /settings */}
           </form>
-          {/* button for signing in with thirdparty */}
+          )
+        }
+
+
+        <div className='p-3'>
           <p id='signup-text' className='signup-text'>Don't have an account? Sign up now!</p>
           <Link to='/signup'>
             <button type='button'>SIGN UP</button>
           </Link>
         </div>
-      </div>
-    </div>
+      </VStack>
+    </VStack>
+    </>
   );
 }
 

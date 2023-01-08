@@ -4,7 +4,7 @@
 }
 
 .login-container {
-  background: radial-gradient(circle, rgba(203,199,205,1) 0%, rgba(45,10,65,1) 100%);
+  background: hsl(300, 3%, 92%);
   height: 100vh;
   width: 100%;
   padding: 0;
@@ -17,17 +17,20 @@
 }
 
 .login-content {
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:  #320644;
+  // lightne this up
+  // background-color:  #320644;
+  background: rgb(255, 255, 255);
   color: #cbc7cd;
-  border: 2px solid #1d062a;
+
+  // border: 2px solid #1d062a;
   border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   font-family: 'Dosis';
+  border: 0.5px solid rgb(215, 210, 223);
 }
 
 .loginForm {
@@ -125,8 +128,9 @@ button {
 
 .login-logo {
   margin-top: 30px;
-  height: 150px;
-  width: 300px;
+  height: 100px;
+  width: 250px;
+  border-radius: 75px;
 }
 
 .sign-in-text {
