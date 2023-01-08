@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Tuber';
+  src: url('./Tuber.ttf') format('truetype');
+}
 
 .login-container {
   background: radial-gradient(circle, rgba(203,199,205,1) 0%, rgba(45,10,65,1) 100%);
@@ -37,12 +41,12 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 40px;
   margin-bottom: 1000px;
   font-family: 'Dosis';
-  font-size: 60pt;
-  font-weight: 400;
+  font-size: 20pt;
+  font-weight: 200;
 }
 .p-3, .form {
   display: flex;
@@ -53,6 +57,7 @@
   font-weight: 300;
   margin: 20px;
   font-family: 'Dosis';
+  margin-bottom: 40px;
   border-radius: 8px;
 }
 button {
@@ -100,6 +105,10 @@ button {
   height: 40px;
   margin-bottom: 16px;
   font-size: 14px;
+  border:none;
+  padding-left:8px;
+  border-radius:8px;
+  margin-top:8px;
 }
 .password {
   display: flex;
@@ -109,6 +118,9 @@ button {
   height: 40px;
   margin-bottom: 12px;
   font-size: 14px;
+  border:none;
+  padding-left:8px;
+  border-radius:8px;
 }
 
 .login-logo {
@@ -120,7 +132,7 @@ button {
 .sign-in-text {
   color: white;
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #login-error {
@@ -135,4 +147,8 @@ button {
 
 #sign-in-text {
   font-size: 8px;
+}
+
+.login_button{
+  font-weight:400;
 }

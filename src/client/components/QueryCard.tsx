@@ -1,13 +1,12 @@
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react";
 import { QueryData, QueryCardProps } from "../Types"
 import { useUserContext } from '../UserContext';
+import axios from 'axios';
 
 function QueryCard(props: QueryCardProps): JSX.Element {
 
    const toggleStar = () => {
-     isFavorite ? setIsFavorite(false) : setIsFavorite(true)
-
-     
+      isFavorite ? setIsFavorite(false) : setIsFavorite(true)
      //get a PATCH req to push the query id into the user's favorites array
      //payload needs: query_id, username
      const payloadObj = {
@@ -17,8 +16,22 @@ function QueryCard(props: QueryCardProps): JSX.Element {
 
      }
      console.log('toggleStart payloadObj:', payloadObj)
-     //PATCH the payloadObj to the '/manipulate/favorites/add' endpoint
-     //PATH to '/manipulate/favorites/remove'
+     if(isFavorite){
+         //PATCH the payloadObj to the '/manipulate/favorites/add' endpoint
+         axios.patch('/manipulate/favorites/add', payloadObj)
+            .then(data => {
+               console.log('toggleStart add favorite data: ', data)
+            })
+     }else{
+         //PATH to '/manipulate/favorites/remove'
+         axios.patch('/manipulate/favorites/remove', payloadObj)
+         .then(data => {
+            console.log('toggleStart remove favorite data: ', data)
+         })
+     }
+
+     
+     
    }
    const { userData, setUserData } = useUserContext();
    const [isFavorite, setIsFavorite] = useState<boolean>(false)

@@ -155,16 +155,13 @@ function Content() {
             <Box
               component="form"
               sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
+                '& > :not(style)': { m: 1, width: '35ch' },
               }}
               noValidate
               autoComplete="off"
             >
               <TextField onChange={setMetricName} id="metric-name" label="Metric Name" variant="standard" />
             </Box>
-            <Button onClick={handleSearch} color="primary" variant="contained" id='metric-search-btn'>
-              search
-            </Button>
           </div>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -198,9 +195,13 @@ function Content() {
                 <MenuItem value="alphabet-decreasing">Z-A</MenuItem>
               </Select>
             </FormControl>
+            
           </Box>
+          <Button onClick={handleSearch} color="primary" variant="contained" id='metric-search-btn'>
+              search
+            </Button>
           <div id='fav-toggle'>
-            {favorited ? <h2>&#9733;</h2>:<h2>&#9734;</h2>}
+            {favorited ? <h2 id="filled-star">&#9733;</h2>:<h2>&#9734;</h2>}
             <Switch
               checked={favorited}
               onChange={handleChange}
