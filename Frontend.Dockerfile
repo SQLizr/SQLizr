@@ -16,5 +16,4 @@ RUN yarn build
 FROM nginx:mainline-alpine
 WORKDIR /usr/src/app
 COPY ./nginx.config /etc/nginx/conf.d/default.conf
-COPY --from=builder /usr/src/app/public /usr/share/nginx/html
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
