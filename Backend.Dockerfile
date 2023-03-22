@@ -2,7 +2,6 @@
     WORKDIR /usr/src/app
     COPY package.json .
     RUN yarn install
-    RUN yarn global add typescript
+    RUN yarn global add esbuild-runner
     COPY . .
-    RUN tsc
-    CMD ["node", "--experimental-specifier-resolution=node", "./dist/src/server/server.js"]
+    CMD ["esr", "./src/server/server.ts"]
