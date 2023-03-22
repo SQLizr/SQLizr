@@ -5,4 +5,4 @@
     RUN yarn global add typescript
     COPY . .
     RUN tsc
-    CMD ["node", "./dist/src/server/server.js"]
+    CMD ["node", "--experimental-specifier-resolution=node", "./dist/src/server/server.js"]
